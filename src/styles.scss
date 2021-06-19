@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.mat-body, .mat-body-1, .mat-typography{
+    background:#f7f3f3 !important;
+}
+
+.contain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    .icon {
+      color: #dcdcdc;
+      font-size: 150px;
+      margin-right: 120px;
+    }
+    .info {
+      text-align: center;
+      color: #dcdcdc;
+      font-size: 20px;
+    }
+  }

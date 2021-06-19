@@ -1,0 +1,58 @@
+<app-loading *ngIf="loading"></app-loading>
+<section
+  class="container pb-4"
+  *ngIf="!loading && news?.length > 0; else notResult"
+>
+  <h2 class="mt-4">Resultado da busca</h2>
+  <mat-accordion class="accordion" *ngFor="let new of news; index as i">
+    <mat-expansion-panel
+      (opened)="panelOpenState[i] = true"
+      (closed)="panelOpenState[i] = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ new?.title }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{
+            panelOpenState[i]
+              ? "Ocultar detalhe da ação"
+              : "Ver detalhe da ação"
+          }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="panel">
+        <p>{{ new.description }}</p>
+        <button type="button" class="btn panel" (click)="openModal()">
+          Ver mais
+        </button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>
+
+<ng-template #notResult>
+  <div class="contain">
+    <div>
+      <mat-icon aria-hidden="false" class="icon">plagiarism</mat-icon>
+    </div>
+    <div class="info">
+      Não foi encontrado <br />
+      nenhum resultado.
+    </div>
+  </div>
+</ng-template>
+
+<modal #myModal>
+  <modal-content>
+    <div class="text-center">Tem certeza que deseja ir para tela?</div>
+    <div class="modal-btn">
+      <div (click)="closeModal()">
+        <span>Não</span>
+      </div>
+      <div (click)="closeModal()">
+        <span>Sim</span>
+      </div>
+    </div>
+  </modal-content>
+</modal>

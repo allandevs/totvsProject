@@ -1,0 +1,42 @@
+.container {
+  max-width: 780px;
+  h2 {
+    color: #a9a9a9;
+  }
+}
+.mat-expansion-panel-header-description {
+  flex-grow: 0 !important;
+  font-size: 11px;
+  color: #836fff;
+}
+.mat-accordion .mat-expansion-panel {
+  margin: 20px 0 !important;
+}
+
+mat-panel-title {
+  color: #000;
+  font-size: 12px;
+}
+
+.btn {
+  color: #fff;
+  background: #ffd700;
+  float: right;
+}
+
+.modal-btn {
+  display: flex !important;
+  justify-content: space-around !important;
+}
+
+.modal-btn {
+  display: flex !important;
+  flex-direction: row !important;
+  margin-top: 20px;
+  div {
+    margin: 10px;
+    color: #836fff;
+    font-weight: 900;
+    cursor: pointer;
+  }
+}

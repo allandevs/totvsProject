@@ -1,0 +1,19 @@
+<section class="wave">
+  <div class="logo">
+     <img class="img" src="../../../assets/icon.png"> 
+     <div class="title">TOTVS</div>
+  </div>
+  <div class="search">
+      <div class="input-group md-form form-sm form-2 pl-0">
+          <input class="form-control my-0 py-1 lime-border" [(ngModel)]="filterNews" type="text" placeholder="Pesquisa rápida" aria-label="Search">
+          <div class="input-group-append">
+            <span (click)="getNews()" class="input-group-text lime lighten-2 lupa" id="basic-text1"><i class="fas fa-search text-white"
+                aria-hidden="true"></i></span>
+          </div>
+        </div>
+  </div>
+  <!-- <div class="search">
+    <input type="text" placeholder="Pesquisa rápida" aria-label="Search">
+    
+  </div> -->
+</section>
