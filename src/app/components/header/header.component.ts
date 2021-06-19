@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
       this.news = result.articles.filter(({ title }: any) =>
         title.toLowerCase().includes(this.filterNews.toLowerCase())
       );
-      console.log(this.news);
     });
   }
 }

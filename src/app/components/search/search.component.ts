@@ -12,7 +12,9 @@ export class SearchComponent implements OnInit {
   public search: any;
   public panelOpenState: any = [];
   public loading: boolean = true;
-
+  public offers: any;
+  public results: any = [];
+  public concatDate: any;
   @ViewChild('myModal') myModal: any;
   private modalRef: any;
 
@@ -25,19 +27,39 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((res: any) => {
       this.search = res.filter;
-      this.getDate(this.search);
+      this.getDate();
+      this.getOffers();
     });
   }
 
-  getDate(params: any) {
+  getDate() {
     this.loading = true;
-    this.apiService.getApi().subscribe((result: any) => {
-      this.news = result.articles.filter(({ title }: any) =>
-        title.toLowerCase().includes(params.toLowerCase())
-      );
-      this.loading = false;
-      console.log(this.news);
-    });
+    this.apiService.getApi().subscribe(
+      (result: any) => {
+        this.news = result.articles;
+        this.loading = false;
+      },
+      (error) => {
+        this.getOffers();
+        this.results = this.offers.filter(({ title }: any) =>
+          title.toLowerCase().includes(this.search.toLowerCase())
+        );
+        this.loading = false;
+      }
+    );
+  }
+
+  getOffers() {
+    this.loading = true;
+    this.offers = this.apiService.getOfertas();
+    this.concatDate = this.news.concat(this.offers);
+    this.result(this.search);
+  }
+
+  result(params?: any) {
+    this.results = this.concatDate.filter(({ title }: any) =>
+      title.toLowerCase().includes(params.toLowerCase())
+    );
   }
 
   openModal() {

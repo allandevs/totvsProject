@@ -1,17 +1,17 @@
 <app-loading *ngIf="loading"></app-loading>
 <section
   class="container pb-4"
-  *ngIf="!loading && news?.length > 0; else notResult"
+  *ngIf="!loading && results?.length > 0; else notResult"
 >
   <h2 class="mt-4">Resultado da busca</h2>
-  <mat-accordion class="accordion" *ngFor="let new of news; index as i">
+  <mat-accordion class="accordion" *ngFor="let result of results; index as i">
     <mat-expansion-panel
       (opened)="panelOpenState[i] = true"
       (closed)="panelOpenState[i] = false"
     >
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{ new?.title }}
+          {{ result?.title }}
         </mat-panel-title>
         <mat-panel-description>
           {{
@@ -22,7 +22,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div class="panel">
-        <p>{{ new.description }}</p>
+        <p>{{ result.description }}</p>
         <button type="button" class="btn panel" (click)="openModal()">
           Ver mais
         </button>
